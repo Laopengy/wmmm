@@ -1,22 +1,29 @@
 <template>
   <div class="home">
-    <!-- Top -->
-    <div class="top-box">
-      <!-- 星空 -->
+    <!-- 星空 -->
+    <div class="trails-box" :style="`top: ${goDetaik ? '-66%' : 0}`">
       <canvas id="trails"></canvas>
-      <!-- logo -->
-      <div class="wm-logo">
-        <img src="../../assets/wm-logo-1.png" alt="微梦">
-        <div class="logo-text">
-          <span class="red"></span>
-          <span class="yellow"></span>
-          <span class="green"></span>
-          <span>微光耀日月，梦想逐星辰</span>
-        </div>
-        <!-- <span class="logo-text">逆水寒里的偶遇，一定是宿命的相逢。即使游戏的旅途会暂停，友谊的光也会如传说般永恒。</span> -->
+    </div>
+    <!-- logo 首次展示 -->
+    <div class="wm-logo" v-if="!goDetaik">
+      <img src="../../assets/wm-logo-1.png" alt="微梦" @click="go">
+      <div class="logo-text">
+        <span class="red"></span>
+        <span class="yellow"></span>
+        <span class="green"></span>
+        <span>微光耀日月，梦想逐星辰</span>
       </div>
     </div>
-
+    <!-- 主页页面 点击后展示 -->
+    <div v-else class="content">
+      <!-- <span class="logo-text">逆水寒里的偶遇，一定是宿命的相逢。即使游戏的旅途会暂停，友谊的光也会如传说般永恒。</span> -->
+      <div class="text-box">
+        <div class="text-1">逆水寒里的偶遇</div>
+        <div class="text-1">一定是宿命的相逢</div>
+        <div class="text-1">即使游戏的旅途会暂停</div>
+        <div class="text-1">友谊的光也会如传说般永恒</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,6 +34,7 @@ export default {
   },
   data() {
     return {
+      goDetaik: true,
     }
   },
 
@@ -148,6 +156,10 @@ export default {
         showContext.fillStyle = 'rgba(0,0,0,1)'
         showContext.fillRect(0, 0, showWidth, showHeight)
       })
+    },
+    go() {
+      this.goDetaik = true
+      // this.$router.push('/cockpit')
     }
   },
 }
@@ -155,71 +167,121 @@ export default {
 <style lang="scss">
 .home {
   width: 100%;
-  height: 120%;
+  height: 100%;
+  color: #fff;
   background-color: #000;
+  position: relative;
+}
+
+.trails-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 1s linear;
+  z-index: 1;
 }
 #trails {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
 }
-.top-box {
+.trails-box::after{
+  content: '';
   width: 100%;
-  height: 100vh;
-  position: relative;
-  .wm-logo {
-    width: 200px;
-    height: 90px;
-    // background: url('../../assets/wm-logo.jpg') no-repeat;
-    // background-color: rgba($color: #fff, $alpha: 0.2);
-    // background-size: 100%;
-    position: absolute;
-    bottom: 10%;
-    left: 20%;
-    img{
-      width: 200px;
-      height: 75px;
-    }
-    .logo-text {
-      width: 200px;
-      height: 10px;
-      margin-top: 5px;
-      text-align: center;
-      color: #fff;
-      font-weight: 600;
-      font-size: 12px;
-      font-family: STKaiti;
-      display: flex;
-      align-items: center;
-      .red {
-        margin-top: 3px;
-        margin-right: 3px;
-        display: inline-block;
-        background-color: #e87975;
-        border-radius: 50%;
-        width: 10px;
-        height: 10px;
-      }
-      .yellow {
-        margin-top: 3px;
-        margin-right: 3px;
-        display: inline-block;
-        background-color: #f4cc49;
-        border-radius: 50%;
-        width: 10px;
-        height: 10px;
-      }
-      .green {
-        margin-top: 3px;
-        margin-right: 3px;
-        display: inline-block;
-        background-color: #78da89;
-        border-radius: 50%;
-        width: 10px;
-        height: 10px;
-      }
-    }
+  height: 20%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba($color: #000000, $alpha: 0.6);
+  z-index: 1;
+  -webkit-filter: blur(5px); /* Chrome, Opera */
 
+  -moz-filter: blur(5px);
+
+  -ms-filter: blur(5px);
+
+  filter: blur(5px);
+}
+
+.wm-logo {
+  width: 200px;
+  height: 90px;
+  position: absolute;
+  bottom: 10%;
+  left: 20%;
+  z-index: 10;
+  img{
+    width: 200px;
+    height: 75px;
+    cursor: pointer;
+  }
+  img:hover {
+    filter: drop-shadow(-8px 8px 5px #fff);
+  }
+  .logo-text {
+    width: 200px;
+    height: 10px;
+    margin-top: 5px;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: STKaiti;
+    display: flex;
+    align-items: center;
+    .red {
+      margin-top: 3px;
+      margin-right: 3px;
+      display: inline-block;
+      background-color: #e87975;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+    }
+    .yellow {
+      margin-top: 3px;
+      margin-right: 3px;
+      display: inline-block;
+      background-color: #f4cc49;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+    }
+    .green {
+      margin-top: 3px;
+      margin-right: 3px;
+      display: inline-block;
+      background-color: #78da89;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+    }
   }
 }
 
+.content {
+  width: 100%;
+  height: 66%;
+  background-color: #000;
+  position: absolute;
+  top: 34%;
+  left: 0;
+  .text-box {
+    position: absolute;
+    top: -200px;
+    left: 10%;
+    z-index: 20;
+    .text-1 {
+      font-size: 25px;
+      font-weight: 500;
+      color: #fffc;
+      margin-bottom: 20px;
+      font-family: STKaiti;
+    }
+  }
+}
 </style>
