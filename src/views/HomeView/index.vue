@@ -15,13 +15,41 @@
       </div>
     </div>
     <!-- 主页页面 点击后展示 -->
-    <div v-else class="content">
-      <!-- <span class="logo-text">逆水寒里的偶遇，一定是宿命的相逢。即使游戏的旅途会暂停，友谊的光也会如传说般永恒。</span> -->
-      <div class="text-box">
-        <div class="text-1">逆水寒里的偶遇</div>
-        <div class="text-1">一定是宿命的相逢</div>
-        <div class="text-1">即使游戏的旅途会暂停</div>
-        <div class="text-1">友谊的光也会如传说般永恒</div>
+    <div class="content">
+      <!-- 简介 -->
+      <div class="text-box" >
+        <!-- 文字渐出 -->
+        <transition name="fade">  
+          <div v-if="showContent">
+            <div class="text-1">逆水寒里的偶遇</div>
+            <div class="text-1">一定是宿命的相逢</div>
+            <div class="text-1">即使游戏的旅途会暂停</div>
+            <div class="text-1">友谊的光也会如传说般永恒</div>
+            <div class="text-2">We're making the world a better place</div>
+          </div>
+        </transition>  
+      </div>
+      <!-- 精英展示区 -->
+      <div class="elite-line">
+        <div class="text-fff text-kaiti text-font-size-big">联赛之星</div>
+        <div class="elite-card">
+          <div class="elite-card-item mr-10">
+            <div class="text-fff text-kaiti text-font-size-big mb-5">法外狂徒</div>
+            <div class="text-fff text-kaiti text-font-size-small">击杀之最</div>
+          </div>
+          <div class="elite-card-item mr-10">
+            <div class="text-fff text-kaiti text-font-size-big mb-5">奶妈</div>
+            <div class="text-fff text-kaiti text-font-size-small">治疗之光</div>
+          </div>
+          <div class="elite-card-item mr-10">
+            <div class="text-fff text-kaiti text-font-size-big mb-5">末醉</div>
+            <div class="text-fff text-kaiti text-font-size-small">塔见愁</div>
+          </div>
+          <div class="elite-card-item mr-10">
+            <div class="text-fff text-kaiti text-font-size-big mb-5">野生小黄鱼</div>
+            <div class="text-fff text-kaiti text-font-size-small">控制</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -35,6 +63,7 @@ export default {
   data() {
     return {
       goDetaik: true,
+      showContent: false,
     }
   },
 
@@ -159,6 +188,9 @@ export default {
     },
     go() {
       this.goDetaik = true
+      setTimeout(() => {
+        this.showContent = true
+      }, 500);
       // this.$router.push('/cockpit')
     }
   },
@@ -270,6 +302,7 @@ export default {
   position: absolute;
   top: 34%;
   left: 0;
+  padding: 20px;
   .text-box {
     position: absolute;
     top: -200px;
@@ -282,6 +315,39 @@ export default {
       margin-bottom: 20px;
       font-family: STKaiti;
     }
+    .text-2 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #fffc;
+      margin-bottom: 20px;
+      font-family: STKaiti;
+    }
+  }
+  .elite-card {
+    margin-top: 10px;
+    width: calc(100vw - 40px);
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    .elite-card-item {
+      flex: 1;
+      height: 100px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba($color: #595959, $alpha: .3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
   }
 }
+
+.fade-enter-active, .fade-leave-active {  
+  transition: opacity 2s;  
+}  
+.fade-enter, .fade-leave-to {  
+  opacity: 0;  
+}
+
 </style>
