@@ -7,7 +7,12 @@
       <!-- logo -->
       <div class="wm-logo">
         <img src="../../assets/wm-logo-1.png" alt="微梦">
-        <div class="logo-text">微光耀日月，梦想逐星辰</div>
+        <div class="logo-text">
+          <span class="red"></span>
+          <span class="yellow"></span>
+          <span class="green"></span>
+          <span>微光耀日月，梦想逐星辰</span>
+        </div>
         <!-- <span class="logo-text">逆水寒里的偶遇，一定是宿命的相逢。即使游戏的旅途会暂停，友谊的光也会如传说般永恒。</span> -->
       </div>
     </div>
@@ -162,8 +167,8 @@ export default {
   height: 100vh;
   position: relative;
   .wm-logo {
-    width: 400px;
-    height: 180px;
+    width: 200px;
+    height: 90px;
     // background: url('../../assets/wm-logo.jpg') no-repeat;
     // background-color: rgba($color: #fff, $alpha: 0.2);
     // background-size: 100%;
@@ -171,18 +176,47 @@ export default {
     bottom: 10%;
     left: 20%;
     img{
-      width: 400px;
-      height: 150px;
+      width: 200px;
+      height: 75px;
     }
     .logo-text {
-      width: 400px;
-      height: 20px;
-      margin-top: 10px;
+      width: 200px;
+      height: 10px;
+      margin-top: 5px;
       text-align: center;
       color: #fff;
       font-weight: 600;
-      font-size: 25px;
+      font-size: 12px;
       font-family: STKaiti;
+      display: flex;
+      align-items: center;
+      .red {
+        margin-top: 3px;
+        margin-right: 3px;
+        display: inline-block;
+        background-color: #e87975;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+      }
+      .yellow {
+        margin-top: 3px;
+        margin-right: 3px;
+        display: inline-block;
+        background-color: #f4cc49;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+      }
+      .green {
+        margin-top: 3px;
+        margin-right: 3px;
+        display: inline-block;
+        background-color: #78da89;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+      }
     }
 
   }
