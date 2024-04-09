@@ -33,16 +33,16 @@
       <div class="situation-line mt-10">
         <div class="text-fff text-kaiti text-font-size-big">最近战况</div>
         <div class="situation-card">
-          <div class="situation-card-item mr-10 win-box">
+          <div class="situation-card-item win-box">
             <span class="text-fff text-kaiti text-font-size-big">满月 - 蜜雪冰城</span>
           </div>
-          <div class="situation-card-item mr-10 win-box">
+          <div class="situation-card-item win-box">
             <div class="text-fff text-kaiti text-font-size-big">满月 - 微醺麓栈</div>
           </div>
-          <div class="situation-card-item mr-10 win-box">
+          <div class="situation-card-item win-box">
             <div class="text-fff text-kaiti text-font-size-big">满月 - 雁回西楼</div>
           </div>
-          <div class="situation-card-item mr-10 lose-box">
+          <div class="situation-card-item lose-box">
             <div class="text-fff text-kaiti text-font-size-big">满月 - 天宫</div>
           </div>
         </div>
@@ -51,22 +51,28 @@
       <div class="elite-line mt-10">
         <div class="text-fff text-kaiti text-font-size-big">联赛之星</div>
         <div class="elite-card">
-          <div class="elite-card-item mr-10">
+          <div class="elite-card-item border-gradation">
             <div class="text-fff text-kaiti text-font-size-big mb-5">法外狂徒</div>
             <div class="text-fff text-kaiti text-font-size-small">击杀之最</div>
           </div>
-          <div class="elite-card-item mr-10">
+          <div class="elite-card-item border-gradation">
             <div class="text-fff text-kaiti text-font-size-big mb-5">奶妈</div>
             <div class="text-fff text-kaiti text-font-size-small">治疗之光</div>
           </div>
-          <div class="elite-card-item mr-10">
+          <div class="elite-card-item border-gradation">
             <div class="text-fff text-kaiti text-font-size-big mb-5">末醉</div>
             <div class="text-fff text-kaiti text-font-size-small">塔见愁</div>
           </div>
-          <div class="elite-card-item mr-10">
+          <div class="elite-card-item border-gradation">
             <div class="text-fff text-kaiti text-font-size-big mb-5">野生小黄鱼</div>
             <div class="text-fff text-kaiti text-font-size-small">控制</div>
           </div>
+        </div>
+      </div>
+      <!-- go 数据分析页面 -->
+      <div class="go">
+        <div class="go-btn">
+          前往数据分析
         </div>
       </div>
     </div>
@@ -80,7 +86,7 @@ export default {
   },
   data() {
     return {
-      goDetaik: true,
+      goDetaik: false,
       showContent: false,
     }
   },
@@ -341,45 +347,101 @@ export default {
       font-family: STKaiti;
     }
   }
-  .situation-card {
-    margin-top: 10px;
+  .situation-line {
     width: calc(100vw - 40px);
-    height: 100px;
-    display: flex;
-    justify-content: space-around;
-    .situation-card-item {
-      cursor: pointer;
-      flex: 1;
+    .situation-card {
+      margin-top: 10px;
+      width: 100%;
       height: 100px;
-      border-radius: 10px;
-      overflow: hidden;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-around;
+      overflow: hidden;
+      .situation-card-item {
+        cursor: pointer;
+        width: 20%;
+        height: 100px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
     }
   }
-  .elite-card {
-    margin-top: 10px;
+  .elite-line {
     width: calc(100vw - 40px);
-    height: 100px;
-    display: flex;
-    justify-content: space-around;
-    .elite-card-item {
-      cursor: pointer;
-      flex: 1;
+    .elite-card {
+      margin-top: 10px;
+      width: 100%;
       height: 100px;
-      border-radius: 10px;
-      overflow: hidden;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: rgba($color: #595959, $alpha: .3);
+      justify-content: space-around;
+      .elite-card-item {
+        cursor: pointer;
+        width: 20%;
+        height: 100px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: rgba($color: #595959, $alpha: .3);
+      }
+      .elite-card-item:hover {
+        scale: 1.02;
+        background: rgba($color: #595959, $alpha: .6);
+      }
     }
-    .elite-card-item:hover {
-      scale: 1.02;
-      background: rgba($color: #595959, $alpha: .6);
-    }
+  }
+}
+
+.go {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  width: calc(100vw - 40px);
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  .go-btn {
+    position: relative;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 20px;
+    font-family: sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: linear-gradient(90deg,rgb(39, 122, 218),rgb(74, 230, 121),rgb(201, 214, 13),rgb(226, 20, 233),rgb(16, 172, 219));
+    background-size: 400%;
+    z-index: 1000;
+  }
+  .go-btn::after{
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    width: 140px;
+    height: 50px;
+    background: linear-gradient(90deg,rgb(39, 122, 218),rgb(74, 230, 121),rgb(243, 169, 10),rgb(226, 20, 233),rgb(16, 172, 219));
+    background-size: 400%;
+    opacity: 0;
+    z-index: -1;
+    border-radius: 45px;
+    transition: 0.6s;
+  }
+  .go-btn:hover::after{
+    filter: blur(15px);
+    opacity: 1;
+    animation: move 8s linear alternate infinite;
+  }
+  .go-btn:hover{
+    animation: move 5s linear alternate infinite;
   }
 }
 
@@ -390,20 +452,51 @@ export default {
   opacity: 0;  
 }
 
-.win-box {
-  background: rgba($color: #00ff44, $alpha: .2);
+.border-gradation {
+  border: 5px solid;
+  border-image: linear-gradient(45deg, #ffadad, #fdffb6, #9bf6ff, #a0c4ff, #b2ffd1) 10 / 3px 3px stretch;
 }
-.win-box:hover {
-  background: rgba($color: #00ff44, $alpha: .4);
-  scale: 1.02;
+.border-gradation:hover {
+  scale: 1.01;
+  animation: moveborder 1s linear alternate infinite;
 }
 
+.win-box {
+  border: 5px solid;
+  border-image: linear-gradient(45deg, #0df958, #005421) 10 / 3px 3px stretch;
+}
+.win-box:hover {
+  scale: 1.01;
+  animation: moveborder 3s linear alternate infinite;
+}
 .lose-box {
-  background: rgba($color: #ff0000, $alpha: .2);
+  border: 5px solid;
+  border-image: linear-gradient(45deg, #ff9696, #ff0000) 10 / 3px 3px stretch;
 }
 .lose-box:hover {
-  background: rgba($color: #ff0000, $alpha: .4);
-  scale: 1.02;
+  scale: 1.01;
+  animation: moveborder 3s linear alternate infinite;
 }
+
+
+@keyframes move{
+  0%{
+    background-position: 0%;
+  }
+  100%{
+    background-position: 100%;
+  }
+}
+
+@keyframes moveborder{
+  from{
+    filter: hue-rotate(0deg);
+  }
+  to{
+    filter: hue-rotate(360deg);
+  }
+}
+
+
 
 </style>
