@@ -29,8 +29,26 @@
           </div>
         </transition>  
       </div>
+      <!-- 近期战况 -->
+      <div class="situation-line mt-10">
+        <div class="text-fff text-kaiti text-font-size-big">最近战况</div>
+        <div class="situation-card">
+          <div class="situation-card-item mr-10 win-box">
+            <span class="text-fff text-kaiti text-font-size-big">满月 - 蜜雪冰城</span>
+          </div>
+          <div class="situation-card-item mr-10 win-box">
+            <div class="text-fff text-kaiti text-font-size-big">满月 - 微醺麓栈</div>
+          </div>
+          <div class="situation-card-item mr-10 win-box">
+            <div class="text-fff text-kaiti text-font-size-big">满月 - 雁回西楼</div>
+          </div>
+          <div class="situation-card-item mr-10 lose-box">
+            <div class="text-fff text-kaiti text-font-size-big">满月 - 天宫</div>
+          </div>
+        </div>
+      </div>
       <!-- 精英展示区 -->
-      <div class="elite-line">
+      <div class="elite-line mt-10">
         <div class="text-fff text-kaiti text-font-size-big">联赛之星</div>
         <div class="elite-card">
           <div class="elite-card-item mr-10">
@@ -323,6 +341,23 @@ export default {
       font-family: STKaiti;
     }
   }
+  .situation-card {
+    margin-top: 10px;
+    width: calc(100vw - 40px);
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    .situation-card-item {
+      cursor: pointer;
+      flex: 1;
+      height: 100px;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
   .elite-card {
     margin-top: 10px;
     width: calc(100vw - 40px);
@@ -330,15 +365,20 @@ export default {
     display: flex;
     justify-content: space-around;
     .elite-card-item {
+      cursor: pointer;
       flex: 1;
       height: 100px;
       border-radius: 10px;
       overflow: hidden;
-      background: rgba($color: #595959, $alpha: .3);
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      background: rgba($color: #595959, $alpha: .3);
+    }
+    .elite-card-item:hover {
+      scale: 1.02;
+      background: rgba($color: #595959, $alpha: .6);
     }
   }
 }
@@ -348,6 +388,22 @@ export default {
 }  
 .fade-enter, .fade-leave-to {  
   opacity: 0;  
+}
+
+.win-box {
+  background: rgba($color: #00ff44, $alpha: .2);
+}
+.win-box:hover {
+  background: rgba($color: #00ff44, $alpha: .4);
+  scale: 1.02;
+}
+
+.lose-box {
+  background: rgba($color: #ff0000, $alpha: .2);
+}
+.lose-box:hover {
+  background: rgba($color: #ff0000, $alpha: .4);
+  scale: 1.02;
 }
 
 </style>
