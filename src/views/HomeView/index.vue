@@ -71,7 +71,7 @@
       </div>
       <!-- go 数据分析页面 -->
       <div class="go">
-        <div class="go-btn">
+        <div class="go-btn" @click="goCockpit">
           前往数据分析
         </div>
       </div>
@@ -215,8 +215,10 @@ export default {
       setTimeout(() => {
         this.showContent = true
       }, 500);
-      // this.$router.push('/cockpit')
-    }
+    },
+    goCockpit() {
+      this.$router.push('/cockpit')
+    },
   },
 }
 </script >
