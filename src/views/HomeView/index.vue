@@ -6,7 +6,8 @@
     </div>
     <!-- logo 首次展示 -->
     <div class="wm-logo" v-if="!goDetaik">
-      <img src="../../assets/wm-logo-1.png" alt="微梦" @click="go">
+      <!-- <img src="../../assets/wm-logo-1.png" alt="微梦" @click="go"> -->
+      <img src="../../assets/wm-logo-1.png" alt="微梦" @click="goCockpit">
       <div class="logo-text">
         <span class="red"></span>
         <span class="yellow"></span>
@@ -80,6 +81,8 @@
 </template>
 
 <script>
+// import fileChang from '@/utils/getData.js'
+
 export default {
   name: 'HomeView',
   components: {

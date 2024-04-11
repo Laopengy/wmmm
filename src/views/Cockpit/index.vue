@@ -178,8 +178,8 @@ export default {
   transform: translate(-50%, -50%);
   width: 85%;
   height: 90%;
-  background: rgba($color: #fff, $alpha: .9);
   box-shadow: 10px 10px 16px rgba(255, 255, 255, 0.4);
+  background: rgba($color: #fff, $alpha: .9);
   // background: rgba($color: #000, $alpha: .4);
   border-radius: 10px;
   display: flex;
@@ -212,6 +212,7 @@ export default {
   .right-data {
     width: 85%;
     height: 100%;
+    padding: 20px;
   }
 }
 

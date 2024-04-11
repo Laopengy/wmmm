@@ -1,6 +1,6 @@
 <template>
   <div class="session">
-    message
+    敬请期待
   </div>
 </template>
 
