@@ -3,7 +3,12 @@
     <div class="box-card">
       <div class="left-info">
         <div class="vs-line">
-          {{ `对阵： ${our.name} --- ${enemy.name}` }}
+          <div>
+            {{ `对阵： ${our.name} --- ${enemy.name}` }}
+          </div>
+          <div class="time-line mt-10">
+            {{ `场次： 周五第一场` }}
+          </div>
         </div>
         <div class="info-card">
           <div class="data-line data-left-box">
@@ -78,6 +83,14 @@ export default {
       font-family: STKaiti;
       font-weight: 600;
       font-size: 20px;
+    }
+    .time-line{
+      width: 100%;
+      color: #999;
+      text-align: center;
+      font-family: STKaiti;
+      font-weight: 600;
+      font-size: 16px;
     }
     .info-card {
       width: 100%;
