@@ -1,48 +1,50 @@
 <template>
   <div class="session">
     <el-table
-      :data="memberList"
+      :data="memberData"
       border
       :max-height="`${tableHeight}`"
       style="width: 100%">
       <el-table-column
-        prop="userName"
+        prop="名称"
         label="姓名">
         <template slot-scope="scoped">
           <!-- 铁衣 -->
-          <span v-if="scoped.row.occupation === '铁衣'" class="ty">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '铁衣'" class="ty">{{ scoped.row['名称'] }}</span>
           <!-- 血河 -->
-          <span v-if="scoped.row.occupation === '血河'" class="xh">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '血河'" class="xh">{{ scoped.row['名称'] }}</span>
           <!-- 素问 -->
-          <span v-if="scoped.row.occupation === '素问'" class="sw">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '素问'" class="sw">{{ scoped.row['名称'] }}</span>
           <!-- 九零 -->
-          <span v-if="scoped.row.occupation === '九灵'" class="jl">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '九灵'" class="jl">{{ scoped.row['名称'] }}</span>
           <!-- 荒羽 -->
-          <span v-if="scoped.row.occupation === '荒羽'" class="hy">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '荒羽'" class="hy">{{ scoped.row['名称'] }}</span>
           <!-- 潮光 -->
-          <span v-if="scoped.row.occupation === '潮光'" class="cg">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '潮光'" class="cg">{{ scoped.row['名称'] }}</span>
           <!-- 神相 -->
-          <span v-if="scoped.row.occupation === '神相'" class="sx">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '神相'" class="sx">{{ scoped.row['名称'] }}</span>
           <!-- 玄机 -->
-          <span v-if="scoped.row.occupation === '玄机'" class="xj">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '玄机'" class="xj">{{ scoped.row['名称'] }}</span>
           <!-- 龙吟 -->
-          <span v-if="scoped.row.occupation === '龙吟'" class="ly">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '龙吟'" class="ly">{{ scoped.row['名称'] }}</span>
           <!-- 碎梦 -->
-          <span v-if="scoped.row.occupation === '碎梦'" class="sm">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '碎梦'" class="sm">{{ scoped.row['名称'] }}</span>
           <!-- 鸿音 -->
-          <span v-if="scoped.row.occupation === '鸿音'" class="hyin">{{ scoped.row.userName }}</span>
+          <span v-if="scoped.row['职业'] === '鸿音'" class="hyin">{{ scoped.row['名称'] }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        prop="occupation"
+        prop="职业"
+        sortable
         label="职业">
       </el-table-column>
       <el-table-column
-        prop="position"
+        prop="职位"
+        sortable
         label="职位">
       </el-table-column>
       <el-table-column
-        prop="combatPower"
+        prop="装评"
         sortable
         label="战力">
       </el-table-column>
@@ -52,7 +54,7 @@
 
 
 <script>
-import memberData from '../../../stores/memberData.js'
+import memberList from '@/file/member/member.json'
 
 export default {
   name: 'memberView',
@@ -60,17 +62,15 @@ export default {
   },
   data() {
     return {
-      memberList: [],
       tableHeight: null,
+      memberData: [],
     }
   },
 
   mounted() {
-    this.memberList = memberData
     const contentBox = document.getElementsByClassName('right-data')[0]
     this.tableHeight = contentBox.offsetHeight
-    console.dir( this.tableHeight, '=====>>>>>  this.tableHeight');
-
+    this.memberData = memberList.data
   },
   methods: {
 

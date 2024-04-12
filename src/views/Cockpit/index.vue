@@ -25,6 +25,10 @@ import Member from './components/member.vue'
 import MessageView from './components/message.vue'
 import Session from './components/session.vue'
 
+import { mapState, mapActions } from 'pinia';
+import { useFriday01Store } from '@/stores/friday01';
+
+
 export default {
   name: 'CockpitView',
   components: {
@@ -39,10 +43,18 @@ export default {
     }
   },
 
+  computed:{
+    ...mapState(useFriday01Store, []),
+  },
+
+
   mounted() {
+    this.initFriday01()
     this.init()
   },
   methods: {
+    ...mapActions(useFriday01Store, ['initFriday01']),
+
     init(){
       // 创建两个 canvas 元素，show 用于显示，help 作为辅助
       const help = document.createElement('canvas')

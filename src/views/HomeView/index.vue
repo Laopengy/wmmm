@@ -81,8 +81,6 @@
 </template>
 
 <script>
-// import fileChang from '@/utils/getData.js'
-
 export default {
   name: 'HomeView',
   components: {
@@ -94,12 +92,16 @@ export default {
     }
   },
 
+  computed:{
+  },
+
   mounted() {
     this.$nextTick(() => {
       this.init()
     })
   },
   methods: {
+
     init(){
       // 创建两个 canvas 元素，show 用于显示，help 作为辅助
       const help = document.createElement('canvas')
