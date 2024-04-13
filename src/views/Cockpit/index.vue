@@ -27,6 +27,8 @@ import Session from './components/session.vue'
 
 import { mapState, mapActions } from 'pinia';
 import { useFriday01Store } from '@/stores/friday01';
+import { useFriday02Store } from '@/stores/friday02';
+import { useSaturdaystore } from '@/stores/Saturday';
 
 
 export default {
@@ -50,10 +52,14 @@ export default {
 
   mounted() {
     this.initFriday01()
+    this.initFriday02()
+    this.initSaturday()
     this.init()
   },
   methods: {
     ...mapActions(useFriday01Store, ['initFriday01']),
+    ...mapActions(useFriday02Store, ['initFriday02']),
+    ...mapActions(useSaturdaystore, ['initSaturday']),
 
     init(){
       // 创建两个 canvas 元素，show 用于显示，help 作为辅助
@@ -74,7 +80,6 @@ export default {
 
       // 获取上下文
       const helpContext = help.getContext('2d')
-      console.log(helpContext, '======>>>>> helpContext')
       const showContext = show.getContext('2d')
 
       // 设置显示区域背景色

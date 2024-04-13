@@ -121,7 +121,6 @@ export default {
 
       // 获取上下文
       const helpContext = help.getContext('2d')
-      console.log(helpContext, '======>>>>> helpContext')
       const showContext = show.getContext('2d')
 
       // 设置显示区域背景色

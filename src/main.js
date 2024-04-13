@@ -6,6 +6,7 @@ import ElementUI from 'element-ui';
 import { Icon,Divider } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import { createPinia, PiniaVuePlugin } from 'pinia';
+import { stateFormat} from "@/utils/stateFormat";
 
 Vue.use(Icon);
 Vue.use(Divider)
@@ -13,6 +14,8 @@ Vue.use(ElementUI)
 
 Vue.use(PiniaVuePlugin);
 const pinia = createPinia();
+
+Vue.prototype.stateFormat = stateFormat
 
 
 Vue.config.productionTip = false

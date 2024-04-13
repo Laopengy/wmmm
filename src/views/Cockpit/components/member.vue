@@ -3,8 +3,8 @@
     <el-table
       :data="memberData"
       border
-      :max-height="`${tableHeight}`"
-      style="width: 100%">
+      :max-height="`${tableHeight - 40}`"
+      :style="`width: ${tableWidth - 40}px`">
       <el-table-column
         prop="名称"
         label="姓名">
@@ -46,6 +46,7 @@
       <el-table-column
         prop="装评"
         sortable
+        :formatter="stateFormat" 
         label="战力">
       </el-table-column>
     </el-table>
@@ -63,6 +64,7 @@ export default {
   data() {
     return {
       tableHeight: null,
+      tableWidth: null,
       memberData: [],
     }
   },
@@ -70,6 +72,7 @@ export default {
   mounted() {
     const contentBox = document.getElementsByClassName('right-data')[0]
     this.tableHeight = contentBox.offsetHeight
+    this.tableWidth = contentBox.offsetWidth
     this.memberData = memberList.data
   },
   methods: {

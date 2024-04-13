@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import friday01Excel from '@/file/data/Friday01.json'
+import SaturdayExcel from '@/file/data/Saturday.json'
 
-export const useFriday01Store = defineStore('friday01', {
+export const useSaturdaystore = defineStore('Saturday', {
   state: () => ({
-    our: {
+    our3: {
       name: '',
       MemberList: [],
       MemberLength: 0,
@@ -16,7 +16,7 @@ export const useFriday01Store = defineStore('friday01', {
       DoctorCount: 0, // 我方素问人数
       OkuribitoCount: 0, // 我方90人数
     },
-    enemy: {
+    enemy3: {
       name: '',
       MemberList: [],
       MemberLength: 0,
@@ -29,19 +29,20 @@ export const useFriday01Store = defineStore('friday01', {
       DoctorCount: 0, // 我方素问人数
       OkuribitoCount: 0, // 我方90人数
     },
-    maxData: {
+    maxData3: {
       dp: 0, // 对玩家伤害
       dc: 0, // 塔伤
       assets: 0, // 战备资源
       controls: 0, // 控制
       healing: 0, // 治疗量
     }
+
   }),
   actions: {
     getLeagueList() {
       this.leagueList = []
     },
-    initFriday01() {
+    initSaturday() {
       let ourMemberCount = 0
       let enemyMemberCount = 0
       let ourMemberList = []
@@ -116,8 +117,23 @@ export const useFriday01Store = defineStore('friday01', {
         "碎梦": 0,
         "鸿音": 0,
       }
-    
-      friday01Excel.data.forEach(item => {
+      // 击败
+      // 助攻
+      // 化羽
+      // 对建筑伤害
+      // 对玩家伤害
+      // 帮会名
+      // 战备资源
+      // 所在团长
+      // 承受伤害
+      // 控制
+      // 治疗值
+      // 玩家
+      // 等级
+      // 职业
+      // 重伤
+      // 青灯焚骨
+      SaturdayExcel.data.forEach(item => {
         if(item['帮会名'] === '满月') {
           ourMemberCount++
           ourAggregate.aggregateCombinedInjury += item['对建筑伤害'] + item['对玩家伤害']
@@ -179,7 +195,7 @@ export const useFriday01Store = defineStore('friday01', {
         }
       })
       // 我方数据输出
-      this.our = {
+      this.our3 = {
         name: '满月',
         MemberList: ourMemberList,
         MemberLength: ourMemberCount,
@@ -220,7 +236,7 @@ export const useFriday01Store = defineStore('friday01', {
         },
       },
       // 敌方输出输出
-      this.enemy = {
+      this.enemy3 = {
         name: enemyName,
         MemberList: enemyMemberList,
         MemberLength: enemyMemberCount,
@@ -260,15 +276,15 @@ export const useFriday01Store = defineStore('friday01', {
           HighestCremation: this.findMax(enemyMemberList, 'aggregateCremation'), // 青灯焚骨
         },
       },
-      this.maxData = {
-        dp: this.our.AllData.aggregateHurt > this.enemy.AllData.aggregateHurt ? this.our.AllData.aggregateHurt :  this.enemy.AllData.aggregateHurt, // 对玩家伤害
-        dc: this.our.AllData.aggregateHurtTower > this.enemy.AllData.aggregateHurtTower ? this.our.AllData.aggregateHurtTower :  this.enemy.AllData.aggregateHurtTower, // 塔伤
-        assets: this.our.AllData.aggregateAssets > this.enemy.AllData.aggregateAssets ? this.our.AllData.aggregateAssets :  this.enemy.AllData.aggregateAssets, // 战备资源
-        controls: this.our.AllData.aggregateControls > this.enemy.AllData.aggregateControls ? this.our.AllData.aggregateControls :  this.enemy.AllData.aggregateControls, // 控制
-        healing: this.our.AllData.aggregateHeal > this.enemy.AllData.aggregateHeal ? this.our.AllData.aggregateHeal :  this.enemy.AllData.aggregateHeal, // 治疗量
+      this.maxData3 = {
+        dp: this.our3.AllData.aggregateHurt > this.enemy3.AllData.aggregateHurt ? this.our3.AllData.aggregateHurt :  this.enemy3.AllData.aggregateHurt, // 对玩家伤害
+        dc: this.our3.AllData.aggregateHurtTower > this.enemy3.AllData.aggregateHurtTower ? this.our3.AllData.aggregateHurtTower :  this.enemy3.AllData.aggregateHurtTower, // 塔伤
+        assets: this.our3.AllData.aggregateAssets > this.enemy3.AllData.aggregateAssets ? this.our3.AllData.aggregateAssets :  this.enemy3.AllData.aggregateAssets, // 战备资源
+        controls: this.our3.AllData.aggregateControls > this.enemy3.AllData.aggregateControls ? this.our3.AllData.aggregateControls :  this.enemy3.AllData.aggregateControls, // 控制
+        healing: this.our3.AllData.aggregateHeal > this.enemy3.AllData.aggregateHeal ? this.our3.AllData.aggregateHeal :  this.enemy3.AllData.aggregateHeal, // 治疗量
       }
-      console.log(this.our, '======>>>>> 01我方数据输出')
-      console.log(this.enemy, '======>>>>> 01敌方输出输出')
+      console.log(this.our3, '======>>>>> 03我方数据输出')
+      console.log(this.enemy3, '======>>>>> 03敌方输出输出')
     },
     // 寻找最大值
     findMax(obj, key) {
